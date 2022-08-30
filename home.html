@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saketa</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+</head>
+
+<body>
+    <section class="main-section">
+        <section class="header-section d-flex">
+            <div class="company-logo mt-auto"><a href="javascirpt:void(0)" onclick="onReload()"><img
+                        src="saketa-logo (1).png" alt="company-logo"></a></div>
+            <div class="employee-directory px-4 ">
+                <p class="field-name ">Employee Directory</p>
+                <p class="quote"> The Ultimate People Directory Experience</p>
+            </div>
+            <div class="employee-profile d-flex justify-content-end align-items-end"><span
+                    class="welcome">Welcome,</span><span class="user-name">Andrew Philips</span><img
+                    src="https://images.unsplash.com/photo-1600969207004-501a76c66d1b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1025&q=80"
+                    alt="" id="currentUserImg" class=""></div>
+        </section>
+        <hr>
+        <div class="row employee-filter">
+            <div class="col-2 side-navbar">
+                <ul id="departement" >
+                    <header class="heading">Departement</header>
+                    <li class="list-padding  py-md-1 py-sm-1 "><a href="javascript:void(0)" onclick="searchEmployee('it','departement')">IT</a><span
+                            id="it"></span></li>
+                    <li class="list-padding  py-md-1 py-sm-1 py-1"><a href="javascript:void(0)" onclick="searchEmployee('humanResource','departement')">Human
+                            Resources</a><span id="humanResource"></span></li>
+                    <li class="list-padding  py-md-1 py-sm-1 py-1"><a href="javascript:void(0)" onclick="searchEmployee('md','departement')">MD</a><span
+                            id="md"></span></li>
+                    <li class="list-padding  py-md-1 py-sm-1 py-1"><a href="javascript:void(0)" onclick="searchEmployee('sales','departement')">Sales</a><span
+                            id="sales"></span></li>
+                </ul>
+                <ul id="Offices">
+                    <header class="heading">Offices</header>
+                    <li class="list-padding  py-md-1 py-sm-1 py-1"><a href="javascript:void(0)" onclick="searchEmployee('Seattle','office')">Seattle</a><span
+                            id="seattle"></span></li>
+                    <li class="list-padding  py-md-1 py-sm-1 py-1"><a href="javascript:void(0)" onclick="searchEmployee('India','office')">India</a><span
+                            id="india"></span></li>
+                </ul>
+                <ul id="jobTitles">
+                    <header class="heading">Job Titles</header>
+                    <li class="list-padding  py-md-1 py-sm-1 py-1"><a href="javascript:void(0)"
+                            onclick="searchEmployee('SharePoint Practice Head','jobTitle')">SharePoint Practice
+                            Heaad</a><span id="sharepointPractice"></span></li>
+                    <li class="list-padding  py-md-1 py-sm-1 py-1"><a href="javascript:void(0)" onclick="searchEmployee('.Net Development Lead','jobTitle')">.Net
+                            Development Lead</a><span id="netDevelpment"></span></li>
+                    <li class="list-padding  py-md-1 py-sm-1 py-1"><a href="javascript:void(0)" onclick="searchEmployee('Recruiting Expert','jobTitle')">Recruiting
+                            Expert</a><span id="recruitingExpert"></span></li>
+                    <li class="list-padding  py-md-1 py-sm-1 py-1"><a href="javascript:void(0)" onclick="searchEmployee('Bi Developer','jobTitle')">Bi
+                            Developer</a><span id="biDeveloper"></span></li>
+                    <li class="list-padding  py-md-1 py-sm-1 py-1"><a href="javascript:void(0)" onclick="searchEmployee('Business Analyst','jobTitle')">Business
+                            Analyst</a><span id="businessAnalyst"></span></li>
+                </ul>
+            </div>
+            <div class="col-10 employee-info">
+                <div class="search-by-firstchar mb-4">
+                    <div class="char-container d-flex">
+                        <div class="char " onclick="onReload()"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                height="16" fill="white" class="bi bi-person-fill" viewBox="0 0 16 16">
+                                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                            </svg>
+                        </div>
+                        <div class="char" onclick="filterByFirstName()">A</div>
+                        <div class="char" onclick="filterByFirstName()">B</div>
+                        <div class="char" onclick="filterByFirstName()">C</div>
+                        <div class="char" onclick="filterByFirstName()">D</div>
+                        <div class="char" onclick="filterByFirstName()">E</div>
+                        <div class="char" onclick="filterByFirstName()">F</div>
+                        <div class="char" onclick="filterByFirstName()">G</div>
+                        <div class="char" onclick="filterByFirstName()">H</div>
+                        <div class="char" onclick="filterByFirstName()">I</div>
+                        <div class="char" onclick="filterByFirstName()">J</div>
+                        <div class="char" onclick="filterByFirstName()">K</div>
+                        <div class="char" onclick="filterByFirstName()">L</div>
+                        <div class="char" onclick="filterByFirstName()">M</div>
+                        <div class="char" onclick="filterByFirstName()">N</div>
+                        <div class="char" onclick="filterByFirstName()">O</div>
+                        <div class="char" onclick="filterByFirstName()">P</div>
+                        <div class="char" onclick="filterByFirstName()">Q</div>
+                        <div class="char" onclick="filterByFirstName()">R</div>
+                        <div class="char" onclick="filterByFirstName()">S</div>
+                        <div class="char" onclick="filterByFirstName()">T</div>
+                        <div class="char" onclick="filterByFirstName()">U</div>
+                        <div class="char" onclick="filterByFirstName()">V</div>
+                        <div class="char" onclick="filterByFirstName()">W</div>
+                        <div class="char" onclick="filterByFirstName()">X</div>
+                        <div class="char" onclick="filterByFirstName()">Y</div>
+                        <div class="char" onclick="filterByFirstName()">Z</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col d-lg-flex d-md-flex d-xs-block  ">
+                        <label class="search-bar px-2 py-2 py-lg-1 py-md-1 py-sm-2" for="search-keyword">Search<span
+                                class="search-icon position-absolute ps-2 pt-2"><svg xmlns="http://www.w3.org/2000/svg"
+                                    width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                    <path
+                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                                </svg></span>
+                            <input type="text" placeholder="Enter any keyword" class="ps-4" id="search-keyword">
+                        </label>
+                        <button type="button" class="clear-btn">Clear</button>
+                        <label for="filter-by " class="filter">Filter by <select name="drop-down"
+                                id="filters-name">
+                                <option value="preferredName" selected>Preferred Name</option>
+                                <option value="firstName">First Name</option>
+                                <option value="lastName">Last Name</option>
+                                <option value="email">Email</option>
+                                <option value="jobTitle">Job Title</option>
+                                <option value="office">Office</option>
+                                <option value="departement">Departement</option>
+                                <option value="phoneNumber">Phone Number</option>
+                                <option value="skypeid">Skype ID</option>
+                            </select></label>
+                        <button class="ms-auto" id="add-employee"> Add Employee</button>
+                    </div>
+                </div>
+                <label class="note"><strong>Note:</strong> Please use the advanced filter options to refine your
+                    results.</label>
+                <div class="employee-container border  d-flex px-3 py-3 "></div>
+            </div>
+        </div>
+    </section>
+    <form action="">
+        <section class="employee-form">
+            <div class="row ">
+                <h1 class="d-flex justify-content-center">Add Employee</h1>
+                <div class="d-flex"><label for="firstName" class="listItems">FirstName:</label><input type="text"
+                        id="firstName"><i class="bi bi-pencil"></i></div>
+                <div class="d-flex"><label for="lastName" class="listItems">LastName</label><input type="text"
+                        id="lastName"><i class="bi bi-pencil"></i></div>
+                <div class="d-flex"><label for="prefferedName" class="listItems">Preffered Name</label> <input
+                        type="text" id="prefferedName" disabled><i class="bi bi-pencil"></i></div>
+                <div class="d-flex"><label for="email" class="listItems">Email</label><input type="email" id="email"><i
+                        class="bi bi-pencil"></i></div>
+                <div class="d-flex"><label for="jobTitle" class="listItems">Job Title</label><input type="text"
+                        id="jobTitle"><i class="bi bi-pencil"></i></div>
+                <div class="d-flex"><label for="office" class="listItems">Office</label><input type="text"
+                        id="office"><i class="bi bi-pencil"></i></div>
+                <div class="d-flex"><label for="phoneNumber" class="listItems">Phone Number</label><input type="number"
+                        id="phoneNumber"><i class="bi bi-pencil"></i></div>
+                <div class="d-flex"><label for="skypeid" class="listItems">Skype In</label><input type="text"
+                        id="skypeid"><i class="bi bi-pencil"></i></div>
+                <div class="d-flex"><label for="Departement" class="listItems">Departement</label><input type="text"
+                        id="Departement"><i class="bi bi-pencil"></i></div>
+            </div>
+            <div class="d-flex justify-content-center">
+                <div class="btn-section d-flex">
+                    <button type="submit" id="submitBtn">Submit</button>
+                    <button type="button" id="closeBtn">Close</button>
+                </div>
+            </div>
+        </section>
+        </div>
+    </form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+
+</body>
+
+</html>
