@@ -327,7 +327,7 @@ input::placeholder{
         font-size: 80%;
     }
     .filter{
-        padding: 1% 2%;
+        padding: 0% 2%;
         font-size:80%;
     }
     .clear-btn
@@ -366,5 +366,9 @@ input::placeholder{
 {
     #filters-name {
         flex:0 0 180px;
-    };
+    }
+    .filter{
+        padding: 2% 2%;
+        font-size:80%;
+    }
 }
