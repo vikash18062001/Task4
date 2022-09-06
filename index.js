@@ -3,7 +3,7 @@ const empContainer = document.querySelector(".employee-container");
 const empForm = document.querySelector(".employee-form");
 const empFirstName = document.querySelector("#firstName");
 const empLastName = document.querySelector("#lastName");
-const empPrefferedName = document.querySelector("#prefferedName");
+const empPrefferedName = document.querySelector("#preferredName");
 const empEmail = document.querySelector("#email");
 const empJobTitle = document.querySelector("#jobTitle");
 const empOffice = document.querySelector("#office");
@@ -16,6 +16,7 @@ const searchNode = document.querySelector("#search-keyword");
 const filterNode = document.querySelector("#filters-name");
 const clearBtn = document.querySelector('.clear-btn');
 const editBtn = document.querySelectorAll('.bi-pencil');
+var isActiveContainer=undefined;
 for(let x of editBtn)
 {
     x.addEventListener('click',function(event){
@@ -48,9 +49,9 @@ function onReload()
     for(let x of data)
     {
         employeeDetailsTemplate(x.preferredName,x.jobTitle,x.departement);
-        initializeCountNode(x.departement.toLowerCase());
-        initializeCountNode(x.office.toLowerCase());
-        initializeCountNode(x.jobTitle.toLowerCase());
+        initializeCountNode(x.departement);
+        initializeCountNode(x.office);
+        initializeCountNode(x.jobTitle);
     }
 }
     sideBarNodeCounts();
@@ -62,7 +63,6 @@ clearBtn.addEventListener('click',(e)=>{
 })
 submitBtn.addEventListener('click',(e)=>{
     e.preventDefault();
-    // console.log(isEdit);
     if(validations())
     {
     if(!isEdit)
@@ -106,7 +106,6 @@ submitBtn.addEventListener('click',(e)=>{
         })
         isEdit=false;
         localStorage.setItem('data',JSON.stringify(empData));
-        // console.log(empData);
     }
     clearInputs(); // to clear all the input field after submission
     empFormDisplay();
@@ -136,7 +135,7 @@ function clearInputs()
     empPhoneNumber.value="";
     empJobTitle.value="";
 }
-function empFormDisplay(firstName='',lastName='',email='',jobTitle='',office='',phoneNumber='',skypeId='',departement='')
+function empFormDisplay(firstName='',lastName='',preferredName='',email='',phoneNumber='',skypeId='')
 {
     if(empForm.style.display==="none")
         empForm.style.display="block";
@@ -144,13 +143,13 @@ function empFormDisplay(firstName='',lastName='',email='',jobTitle='',office='',
         empForm.style.display="none";
     empFirstName.value=firstName;
     empLastName.value=lastName;
-    empDepartement.value=departement;
+    // empDepartement.value=empDepartement.de;
     empEmail.value=email;
-    // empPrefferedName.value=preferredName;
+    empPrefferedName.value=preferredName;
     empSkypeId.value=skypeId;
-    empOffice.value=office;
+    // empOffice.value=office;
     empPhoneNumber.value=phoneNumber;
-    empJobTitle.value=jobTitle;
+    // empJobTitle.value=jobTitle;
 }
 function createNewEmployee()
 {
@@ -164,6 +163,7 @@ function createNewEmployee()
     employee.phoneNumber = empPhoneNumber.value;
     employee.skypeId = empSkypeId.value;
     employee.departement = empDepartement.value;
+    console.log(empDepartement.value);
     return employee;
 }
 // createEmployeeTemplate();
@@ -235,22 +235,22 @@ function pushFilterEmployee(filterList)
     empContainer.innerHTML="";
     for(let x of filterList)
     {
-        employeeDetailsTemplate(x.firstName,x.desigination,x.departement);
+        employeeDetailsTemplate(x.preferredName,x.jobTitle,x.departement);
     }
 }
 function countNodeFunction()
 {
-    countNode.set('it',0);
-    countNode.set('human resources',0);
-    countNode.set('md',0);
-    countNode.set('sales',0);
-    countNode.set('seattle',0);
-    countNode.set('india',0);
-    countNode.set('sharepoint practice head',0);
-    countNode.set('.net development lead',0);
-    countNode.set('recruititng expert',0);
-    countNode.set('bi developer',0);
-    countNode.set('business analyst',0);
+    countNode.set('IT',0);
+    countNode.set('Human Resources',0);
+    countNode.set('MD',0);
+    countNode.set('Sales',0);
+    countNode.set('Seattle',0);
+    countNode.set('India',0);
+    countNode.set('SharePoint Practice Head',0);
+    countNode.set('.Net Development Lead',0);
+    countNode.set('Recruititng Expert',0);
+    countNode.set('Bi Developer',0);
+    countNode.set('Business Analyst',0);
 
 }
 function initializeCountNode(field)
@@ -259,31 +259,49 @@ function initializeCountNode(field)
 }
 function sideBarNodeCounts()
 {
-    navIT.innerText='('+countNode.get('it')+')';
-    navHumanResource.innerText = '('+countNode.get('human resources') +')';
-    navMD.innerText = '('+countNode.get('md')+')';
-    navSales.innerText = '('+countNode.get('sales')+')';
-    navSeattle.innerText = '('+countNode.get('seattle')+')';
-    navIndia.innerText = '('+countNode.get('india')+')';
-    navSharePointHead.innerText = '('+countNode.get('sharepoint practice head')+')';
-    navNetDevelopmentHead.innerText = '('+countNode.get('.net development lead')+')';
-    navRecruitingExpert.innerText = '('+countNode.get('recruititng expert')+')';
-    navBiDeveloper.innerText = '('+countNode.get('bi developer')+')';
-    navBusinessAnalyst.innerText = '('+countNode.get('business analyst')+')';
+    navIT.innerText='('+countNode.get('IT')+')';
+    navHumanResource.innerText = '('+countNode.get('Human Resources') +')';
+    navMD.innerText = '('+countNode.get('MD')+')';
+    navSales.innerText = '('+countNode.get('Sales')+')';
+    navSeattle.innerText = '('+countNode.get('Seattle')+')';
+    navIndia.innerText = '('+countNode.get('India')+')';
+    navSharePointHead.innerText = '('+countNode.get('SharePoint Practice Head')+')';
+    navNetDevelopmentHead.innerText = '('+countNode.get('.Net Development Lead')+')';
+    navRecruitingExpert.innerText = '('+countNode.get('Recruititng Expert')+')';
+    navBiDeveloper.innerText = '('+countNode.get('Bi Developer')+')';
+    navBusinessAnalyst.innerText = '('+countNode.get('Business Analyst')+')';
 }
 function searchEmployeeByFirstName(A='A')
 {
     // make a function to get item from local storage
     var empData = JSON.parse(localStorage.getItem('data'));
     let filterList = empData.filter((x)=>{
-        if(x.firstName[0]===A)
+        if(x.firstName[0]===A ||x.firstName[0]==A.toLowerCase())
             return true;
     })
     pushFilterEmployee(filterList);
 }
 function filterByFirstName()
 {
-    var firstChar = event.currentTarget.innerText;
+    var currentContainer = event.currentTarget;
+    var firstChar = currentContainer.innerText;
+    if(isActiveContainer===currentContainer)
+    {
+        isActiveContainer.style.backgroundColor="";
+        isActiveContainer=undefined;
+    }
+    else if(isActiveContainer!==undefined)
+    {
+        isActiveContainer.style.backgroundColor="";
+        currentContainer.style.backgroundColor='green';
+        isActiveContainer=currentContainer;
+    }
+    else
+    {
+    isActiveContainer=currentContainer;
+    currentContainer.style.backgroundColor = 'green';
+    }
+    
     searchEmployeeByFirstName(firstChar);
 
 }
@@ -326,9 +344,9 @@ function editFormField(e)
 }
 function editFunction(e)
 {
-    
-    e.target.parentNode.children[1].disabled=false;
-    e.target.parentNode.children[1].focus();
+    console.log(e.target.parentNode.children);
+    e.target.parentNode.children[0].disabled=false;
+    e.target.parentNode.children[0].focus();
 }
 function validations()
 {

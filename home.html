@@ -29,37 +29,42 @@
         </section>
         <hr>
         <div class="row employee-filter">
-            <div class="col-2 side-navbar">
-                <ul id="departement" >
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 side-navbar">
+                <ul id="departement">
                     <header class="heading">Departement</header>
-                    <li class="list-padding  py-md-1 py-sm-1 "><a href="javascript:void(0)" onclick="searchEmployee('it','departement')">IT</a><span
-                            id="it"></span></li>
-                    <li class="list-padding  py-md-1 py-sm-1 py-1"><a href="javascript:void(0)" onclick="searchEmployee('humanResource','departement')">Human
+                    <li class="list-padding  py-md-1 py-sm-0 "><a href="javascript:void(0)"
+                            onclick="searchEmployee('it','departement')">IT</a><span id="it"></span></li>
+                    <li class="list-padding  py-md-1 py-sm-0 py-1"><a href="javascript:void(0)"
+                            onclick="searchEmployee('humanResource','departement')">Human
                             Resources</a><span id="humanResource"></span></li>
-                    <li class="list-padding  py-md-1 py-sm-1 py-1"><a href="javascript:void(0)" onclick="searchEmployee('md','departement')">MD</a><span
-                            id="md"></span></li>
-                    <li class="list-padding  py-md-1 py-sm-1 py-1"><a href="javascript:void(0)" onclick="searchEmployee('sales','departement')">Sales</a><span
-                            id="sales"></span></li>
+                    <li class="list-padding  py-md-1 py-sm-0 py-1"><a href="javascript:void(0)"
+                            onclick="searchEmployee('md','departement')">MD</a><span id="md"></span></li>
+                    <li class="list-padding  py-md-1 py-sm-0 py-1"><a href="javascript:void(0)"
+                            onclick="searchEmployee('sales','departement')">Sales</a><span id="sales"></span></li>
                 </ul>
                 <ul id="Offices">
                     <header class="heading">Offices</header>
-                    <li class="list-padding  py-md-1 py-sm-1 py-1"><a href="javascript:void(0)" onclick="searchEmployee('Seattle','office')">Seattle</a><span
-                            id="seattle"></span></li>
-                    <li class="list-padding  py-md-1 py-sm-1 py-1"><a href="javascript:void(0)" onclick="searchEmployee('India','office')">India</a><span
-                            id="india"></span></li>
+                    <li class="list-padding  py-md-1 py-sm-1 py-1"><a href="javascript:void(0)"
+                            onclick="searchEmployee('Seattle','office')">Seattle</a><span id="seattle"></span></li>
+                    <li class="list-padding  py-md-1 py-sm-1 py-1"><a href="javascript:void(0)"
+                            onclick="searchEmployee('India','office')">India</a><span id="india"></span></li>
                 </ul>
                 <ul id="jobTitles">
                     <header class="heading">Job Titles</header>
                     <li class="list-padding  py-md-1 py-sm-1 py-1"><a href="javascript:void(0)"
                             onclick="searchEmployee('SharePoint Practice Head','jobTitle')">SharePoint Practice
-                            Heaad</a><span id="sharepointPractice"></span></li>
-                    <li class="list-padding  py-md-1 py-sm-1 py-1"><a href="javascript:void(0)" onclick="searchEmployee('.Net Development Lead','jobTitle')">.Net
+                            Head</a><span id="sharepointPractice"></span></li>
+                    <li class="list-padding  py-md-1 py-sm-1 py-1"><a href="javascript:void(0)"
+                            onclick="searchEmployee('.Net Development Lead','jobTitle')">.Net
                             Development Lead</a><span id="netDevelpment"></span></li>
-                    <li class="list-padding  py-md-1 py-sm-1 py-1"><a href="javascript:void(0)" onclick="searchEmployee('Recruiting Expert','jobTitle')">Recruiting
+                    <li class="list-padding  py-md-1 py-sm-1 py-1"><a href="javascript:void(0)"
+                            onclick="searchEmployee('Recruiting Expert','jobTitle')">Recruiting
                             Expert</a><span id="recruitingExpert"></span></li>
-                    <li class="list-padding  py-md-1 py-sm-1 py-1"><a href="javascript:void(0)" onclick="searchEmployee('Bi Developer','jobTitle')">Bi
+                    <li class="list-padding  py-md-1 py-sm-1 py-1"><a href="javascript:void(0)"
+                            onclick="searchEmployee('Bi Developer','jobTitle')">Bi
                             Developer</a><span id="biDeveloper"></span></li>
-                    <li class="list-padding  py-md-1 py-sm-1 py-1"><a href="javascript:void(0)" onclick="searchEmployee('Business Analyst','jobTitle')">Business
+                    <li class="list-padding  py-md-1 py-sm-1 py-1"><a href="javascript:void(0)"
+                            onclick="searchEmployee('Business Analyst','jobTitle')">Business
                             Analyst</a><span id="businessAnalyst"></span></li>
                 </ul>
             </div>
@@ -102,7 +107,7 @@
                 <div class="row">
                     <div class="col d-lg-flex d-md-flex d-xs-block  ">
                         <label class="search-bar px-2 py-2 py-lg-1 py-md-1 py-sm-2" for="search-keyword">Search<span
-                                class="search-icon position-absolute ps-2 pt-2"><svg xmlns="http://www.w3.org/2000/svg"
+                                class="search-icon position-absolute "><svg xmlns="http://www.w3.org/2000/svg"
                                     width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                                     <path
                                         d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
@@ -110,8 +115,7 @@
                             <input type="text" placeholder="Enter any keyword" class="ps-4" id="search-keyword">
                         </label>
                         <button type="button" class="clear-btn">Clear</button>
-                        <label for="filter-by " class="filter">Filter by <select name="drop-down"
-                                id="filters-name">
+                        <label for="filter-by " class="filter">Filter by <select name="drop-down" id="filters-name">
                                 <option value="preferredName" selected>Preferred Name</option>
                                 <option value="firstName">First Name</option>
                                 <option value="lastName">Last Name</option>
@@ -131,37 +135,38 @@
             </div>
         </div>
     </section>
-    <form action="">
-        <section class="employee-form">
-            <div class="row ">
-                <h1 class="d-flex justify-content-center">Add Employee</h1>
-                <div class="d-flex"><label for="firstName" class="listItems">FirstName:</label><input type="text"
-                        id="firstName"><i class="bi bi-pencil"></i></div>
-                <div class="d-flex"><label for="lastName" class="listItems">LastName</label><input type="text"
-                        id="lastName"><i class="bi bi-pencil"></i></div>
-                <div class="d-flex"><label for="prefferedName" class="listItems">Preffered Name</label> <input
-                        type="text" id="prefferedName" disabled><i class="bi bi-pencil"></i></div>
-                <div class="d-flex"><label for="email" class="listItems">Email</label><input type="email" id="email"><i
-                        class="bi bi-pencil"></i></div>
-                <div class="d-flex"><label for="jobTitle" class="listItems">Job Title</label><input type="text"
-                        id="jobTitle"><i class="bi bi-pencil"></i></div>
-                <div class="d-flex"><label for="office" class="listItems">Office</label><input type="text"
-                        id="office"><i class="bi bi-pencil"></i></div>
-                <div class="d-flex"><label for="phoneNumber" class="listItems">Phone Number</label><input type="number"
-                        id="phoneNumber"><i class="bi bi-pencil"></i></div>
-                <div class="d-flex"><label for="skypeid" class="listItems">Skype In</label><input type="text"
-                        id="skypeid"><i class="bi bi-pencil"></i></div>
-                <div class="d-flex"><label for="Departement" class="listItems">Departement</label><input type="text"
-                        id="Departement"><i class="bi bi-pencil"></i></div>
-            </div>
-            <div class="d-flex justify-content-center">
-                <div class="btn-section d-flex">
-                    <button type="submit" id="submitBtn">Submit</button>
-                    <button type="button" id="closeBtn">Close</button>
-                </div>
+    <form action="" class="justify-content-center align-items-center">
+        <section class="employee-form  justify-content-center">
+            <div>
+                <header id="addNewEmployee">Add New Employee</header>
+                <div><input type="text" placeholder="FirstName" id="firstName"><i class="bi bi-pencil"></i></div>
+                <div><input type="text" placeholder="LastName" id="lastName"><i class="bi bi-pencil"></i></div>
+                <div><input type="text" placeholder="Preferred Name" disabled id="preferredName"><i class="bi bi-pencil"></i></div>
+                <div><input type="email" placeholder="Enter Email" id="email"><i class="bi bi-pencil"></i></div>
+                <div><input type="text" placeholder="Enter PhoneNumber" id="phoneNumber"><i class="bi bi-pencil"></i></div>
+                <div><input type="text" placeholder="Enter SkypeId" id="skypeid"><i class="bi bi-pencil"></i></div>
+                <div> <select name="departement" id="Departement">
+                        <option value="IT" >IT</option>
+                        <option value="Human Resources" selected>Human Resources</option>
+                        <option value="MD">MD</option>
+                        <option value="Sales">Sales</option>
+                    </select><i class="bi bi-pencil"></i></div>
+                <div><select name="Offices" id="office">
+                        <option value="Seattle" selected>Seattle</option>
+                        <option value="India">india</option>
+                    </select><i class="bi bi-pencil"></i></div>
+                <div> <select name="jobTitles" id="jobTitle">
+                        <option value="SharePoint Practice Head" selected>SharePoint Practise Head</option>
+                        <option value=".Net Development Lead">.Net Development Lead</option>
+                        <option value="Recruiting Expert">Recruiting Expert</option>
+                        <option value="Bi Developer">Bi Developer</option>
+                        <option value="Business Analyst">Business Analyst</option>
+                    </select><i class="bi bi-pencil"></i></div>
+
+                <div class="add-employee-btn"><button type="submit" id="submitBtn">Add Employee</button></div>
+                <div class="cancel-btn"><button type="button" id="closeBtn">Cancel</button></div>
             </div>
         </section>
-        </div>
     </form>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
