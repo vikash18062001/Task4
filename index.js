@@ -115,10 +115,13 @@ submitBtn.addEventListener('click',(e)=>{
 
 closeBtn.addEventListener('click',function(){
     empFormDisplay();
+    clearInputs();
     isEdit=false;
+    
 })
 employeeNode.addEventListener('click',function(){
     empFormDisplay();
+    console.log(isEdit);
 })
 searchNode.addEventListener('keyup',function(){
     searchEmployee(searchNode.value,filterNode.value);
@@ -127,13 +130,13 @@ function clearInputs()
 {
     empFirstName.value="";
     empLastName.value="";
-    empDepartement.value="";
+    empDepartement.value="Human Resources";
     empEmail.value="";
     empPrefferedName.value="";
     empSkypeId.value="";
-    empOffice.value="";
+    empOffice.value="Seattle";
     empPhoneNumber.value="";
-    empJobTitle.value="";
+    empJobTitle.value="SharePoint Practice Head";
 }
 function empFormDisplay(firstName='',lastName='',preferredName='',email='',phoneNumber='',skypeId='')
 {
@@ -141,15 +144,27 @@ function empFormDisplay(firstName='',lastName='',preferredName='',email='',phone
         empForm.style.display="block";
     else
         empForm.style.display="none";
-    empFirstName.value=firstName;
-    empLastName.value=lastName;
-    // empDepartement.value=empDepartement.de;
-    empEmail.value=email;
-    empPrefferedName.value=preferredName;
-    empSkypeId.value=skypeId;
-    // empOffice.value=office;
-    empPhoneNumber.value=phoneNumber;
-    // empJobTitle.value=jobTitle;
+
+    // empFirstName.value=firstName;
+    // empLastName.value=lastName;
+    // empDepartement.value=empDepartement.options[empDepartement.selectedIndex].text;
+    // empEmail.value=email;
+    // empPrefferedName.value=preferredName;
+    // empSkypeId.value=skypeId;
+    // empOffice.value=empOffice.options[empOffice.selectedIndex].text;
+    // empPhoneNumber.value=phoneNumber;
+    // empJobTitle.value=empJobTitle.options[empJobTitle.selectedIndex].text;
+    empFirstName.disabled=false;
+    empLastName.disabled=false;
+    empEmail.disabled=false;
+    // empPrefferedName.disabled=false;
+    empSkypeId.disabled=false;
+    empPhoneNumber.disabled=false;
+    empDepartement.disabled=false;
+    empJobTitle.disabled=false;
+    empOffice.disabled=false;
+    
+
 }
 function createNewEmployee()
 {
@@ -307,7 +322,7 @@ function filterByFirstName()
 }
 function editFormField(e)
 {
-    empFormDisplay();
+    empFormDisplay(); 
     var empData = JSON.parse(localStorage.getItem('data'));
     var empName = e.currentTarget.children[0].innerText;
     empData.forEach(e => {
@@ -341,6 +356,7 @@ function editFormField(e)
         
     currentEvent = e;
     isEdit = true;
+    console.log(isEdit);
 }
 function editFunction(e)
 {
