@@ -16,6 +16,11 @@
 .company-logo img{
     width: 100%;
 }
+.validate-error
+{
+    display: none !important;
+    color:rgb(180, 12, 12)
+}
 .employee-directory
 {
     margin-top: 3%;
@@ -84,8 +89,9 @@ a{
 }
 #search-keyword
 {
-    padding: 2% 0;
+    padding: 1% 0;
     width: 70%;
+    padding-left: 12%;
 }
 .note{
     margin: 1% 0;
@@ -147,8 +153,7 @@ a{
     align-content: flex-start;
 }
 .employee-container div{
-    flex:0 0 24%;
-    width: 245px;
+    flex:1 0 24%;
     height: 100px;
     max-height: 100px;
     align-content: flex-start ;
@@ -170,14 +175,16 @@ a{
 }
 .employee-info-container
 {
-    /* display: flex;
-    flex-direction: column; */
-    padding: 0 2% 0 8%;
+    display: flex;
+    min-width: 230px;
+    max-width: 24%;
+    padding: 0 0% 0 0%;
     background-color: rgb(232, 232, 232);
     margin: 0.2% 0.3%;
     line-height: 90%;
     width: 10px  ;
 }
+
 .employee-info-container p:first-child{
     padding: 2% 0;
 }
@@ -221,7 +228,6 @@ a{
 #currentUserImg
 {
     width: 8%;
-    /* display: none; */
 }
 input::placeholder
 {
@@ -231,7 +237,7 @@ input::placeholder
 #filters-name {
     font-size: 80%;
 }
-ul li span
+.list-padding
 {
     padding: 0 2%;
 }
@@ -239,13 +245,9 @@ ul li span
 {
     flex-basis: 40%;
 }
-#firstName,#lastName,#preferredName,#email,#office,#phoneNumber,#skypeid,#Departement,#jobTitle
+.form-padding
 {
-    flex-basis: 40%;
-}
-i
-{
-    padding: 0 4%;
+    flex-basis: 40% !important;
 }
 .filter
 {
@@ -258,11 +260,7 @@ i
     width: 100%;
     padding:1% 0;
 }
-/* .employee-filter
-{
-    flex:1 0 auto;
-} */
-form div button
+#submitBtn,#closeBtn
 {
 width: 90%;
 }
@@ -275,7 +273,6 @@ width: 90%;
 {
     padding:1% 0;
     display: flex;
-    
 }
 .employee-form div{
     width: 100%;
@@ -303,7 +300,12 @@ input::placeholder{
 
 .employee-container div{
     cursor:pointer;
-    
+}
+.user-img{
+    flex: 1 0 !important;
+}
+.user-image{
+    width: 100px;
 }
 .char-container .char:hover{
     background-color:rgb(200, 181, 10);

@@ -1,3 +1,30 @@
+class Employee{
+    constructor(firstName,lastName,preferredName,email,jobTitle,office,phoneNumber,skypeId,departement)
+    {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.prefferedName = preferredName;
+        this.email = email;
+        this.jobTitle = jobTitle;
+        this.office = office;
+        this.phoneNumber = phoneNumber;
+        this.skypeId = skypeId;
+        this.departement = departement;
+    }
+}
+
+
+const jobTitles = ['SharePoint Practice Head','.Net Development Lead','Recruiting Expert','Bi Developer','Business Analyst'];
+const jobTitlesIds = ['sharepointPractice','netDevelpoment','recruitingExpert','biDeveloper','businessAnalyst'];
+const departementSearch = ['it','human Resource','md','sales'];
+const departement = ['IT','Human Resources','MD','Sales'];
+const departementIds = ['it','humanResource','md','sales'];
+const offices = ['Seattle','India'];
+const officesIds = ['seattle','india'];
+
+const ulDepartement = document.querySelector('#departement');
+const ulOffices = document.querySelector('#Offices');
+const ulJobTitles = document.querySelector('#jobTitles');
 const employeeNode = document.querySelector("#add-employee");
 const empContainer = document.querySelector(".employee-container");
 const empForm = document.querySelector(".employee-form");
@@ -16,7 +43,16 @@ const searchNode = document.querySelector("#search-keyword");
 const filterNode = document.querySelector("#filters-name");
 const clearBtn = document.querySelector('.clear-btn');
 const editBtn = document.querySelectorAll('.bi-pencil');
+const charContainer = document.querySelector('.char-container');
+const errorFirstName = document.querySelector('.errorFirstName');
+const errorLastName =document.querySelector('.errorLastName');
+const errorPhoneNumber = document.querySelector('.errorPhoneNumber');
+const errorEmail = document.querySelector('.errorEmail');
+const errorSkypeId = document.querySelector('.errorSkypeId');
 var isActiveContainer=undefined;
+createListItems();
+filterByFirstNameTemplate();
+
 for(let x of editBtn)
 {
     x.addEventListener('click',function(event){
@@ -32,7 +68,7 @@ const navSales = document.querySelector('#sales');
 const navSeattle = document.querySelector('#seattle');
 const navIndia = document.querySelector('#india');
 const navSharePointHead = document.querySelector('#sharepointPractice');
-const navNetDevelopmentHead = document.querySelector('#netDevelpment');
+const navNetDevelopmentHead = document.querySelector('#netDevelpoment');
 const navRecruitingExpert = document.querySelector('#recruitingExpert');
 const navBiDeveloper = document.querySelector('#biDeveloper');
 const navBusinessAnalyst = document.querySelector('#businessAnalyst');
@@ -58,10 +94,14 @@ function onReload()
 }
 clearBtn.addEventListener('click',(e)=>{
     searchNode.value="";
+    if(isActiveContainer)
+    isActiveContainer.style.backgroundColor="";
     onReload();
     
 })
 submitBtn.addEventListener('click',(e)=>{
+    clearValidations();
+    console.log("helo");
     e.preventDefault();
     if(validations())
     {
@@ -100,7 +140,6 @@ submitBtn.addEventListener('click',(e)=>{
                 x.email = empEmail.value;
                 x.skypeId = empSkypeId.value;
                 x.phoneNumber = empPhoneNumber.value;
-                console.log(x);
             }
             
         })
@@ -117,11 +156,11 @@ closeBtn.addEventListener('click',function(){
     empFormDisplay();
     clearInputs();
     isEdit=false;
+    clearValidations();
     
 })
 employeeNode.addEventListener('click',function(){
     empFormDisplay();
-    console.log(isEdit);
 })
 searchNode.addEventListener('keyup',function(){
     searchEmployee(searchNode.value,filterNode.value);
@@ -144,31 +183,18 @@ function empFormDisplay(firstName='',lastName='',preferredName='',email='',phone
         empForm.style.display="block";
     else
         empForm.style.display="none";
-
-    // empFirstName.value=firstName;
-    // empLastName.value=lastName;
-    // empDepartement.value=empDepartement.options[empDepartement.selectedIndex].text;
-    // empEmail.value=email;
-    // empPrefferedName.value=preferredName;
-    // empSkypeId.value=skypeId;
-    // empOffice.value=empOffice.options[empOffice.selectedIndex].text;
-    // empPhoneNumber.value=phoneNumber;
-    // empJobTitle.value=empJobTitle.options[empJobTitle.selectedIndex].text;
     empFirstName.disabled=false;
     empLastName.disabled=false;
     empEmail.disabled=false;
-    // empPrefferedName.disabled=false;
     empSkypeId.disabled=false;
     empPhoneNumber.disabled=false;
     empDepartement.disabled=false;
     empJobTitle.disabled=false;
     empOffice.disabled=false;
-    
-
 }
 function createNewEmployee()
 {
-    const employee = new Object;
+    const employee = new Employee;
     employee.firstName = empFirstName.value;
     employee.lastName = empLastName.value;
     employee.preferredName = empFirstName.value+" "+empLastName.value;
@@ -178,7 +204,6 @@ function createNewEmployee()
     employee.phoneNumber = empPhoneNumber.value;
     employee.skypeId = empSkypeId.value;
     employee.departement = empDepartement.value;
-    console.log(empDepartement.value);
     return employee;
 }
 // createEmployeeTemplate();
@@ -190,6 +215,9 @@ function employeeDetailsTemplate(firstname,desg,dept)
 {
 
     const div = document.createElement('div');
+    const divImg = document.createElement('div');
+    const divDetails = document.createElement('div');
+    const img = document.createElement('img');
     const name = document.createElement('p');
     const desigination = document.createElement('p');
     const departement = document.createElement('p');
@@ -211,6 +239,10 @@ function employeeDetailsTemplate(firstname,desg,dept)
     icon3.setAttribute('class','bi-chat-fill');
     icon4.setAttribute('class','bi-star-fill');
     icon5.setAttribute('class','bi-heart-fill');
+    img.setAttribute('class','user-image');
+    divDetails.setAttribute('class','emp-details');
+    divImg.setAttribute('class','user-img');
+    img.src="assets/user.png";
     div.addEventListener('click',(e)=>{
         editFormField(e);
     })
@@ -224,10 +256,15 @@ function employeeDetailsTemplate(firstname,desg,dept)
     footerIcons.appendChild(icon3);
     footerIcons.appendChild(icon4);
     footerIcons.appendChild(icon5);
-    div.appendChild(name);
-    div.appendChild(desigination);
-    div.appendChild(departement);
-    div.appendChild(footerIcons);
+    divImg.appendChild(img);
+
+    divDetails.appendChild(name);
+    divDetails.appendChild(desigination);
+    divDetails.appendChild(departement);
+    divDetails.appendChild(footerIcons);
+    
+    div.appendChild(divImg);
+    div.appendChild(divDetails);
 
     empContainer.appendChild(div);
 
@@ -253,6 +290,78 @@ function pushFilterEmployee(filterList)
         employeeDetailsTemplate(x.preferredName,x.jobTitle,x.departement);
     }
 }
+function createListItems()
+{
+   
+    for(let i=0;i<jobTitles.length;i++)
+    {
+        const li=document.createElement('li');
+        const a = document.createElement('a');
+        const span = document.createElement('span');
+        li.setAttribute('class',"py-md-1 py-sm-0");
+        a.setAttribute('href',"javascript:void(0)");
+        a.setAttribute('onclick',`searchEmployee('${jobTitles[i]}','jobTitle')`)
+        a.innerText=jobTitles[i];
+        span.setAttribute('id',jobTitlesIds[i]);
+        span.setAttribute('class',"list-padding");
+        li.appendChild(a);
+        li.appendChild(span);
+        ulJobTitles.appendChild(li);
+    }
+    for(let i=0;i<departement.length;i++)
+    {
+        const li=document.createElement('li');
+        const a = document.createElement('a');
+        const span = document.createElement('span');
+        li.setAttribute('class',"py-md-1 py-sm-0");
+        a.setAttribute('href',"javascript:void(0)");
+        a.setAttribute('onclick',`searchEmployee('${departementSearch[i]}','departement')`)
+        a.innerText=departement[i];
+        span.setAttribute('id',departementIds[i]);
+        span.setAttribute('class',"list-padding");
+
+        li.appendChild(a);
+        li.appendChild(span);
+        ulDepartement.appendChild(li);
+    }
+    for(let i=0;i<offices.length;i++)
+    {
+        const li=document.createElement('li');
+        const a = document.createElement('a');
+        const span = document.createElement('span');
+        li.setAttribute('class',"py-md-1 py-sm-0");
+        a.setAttribute('href',"javascript:void(0)");
+        a.setAttribute('onclick',`searchEmployee('${offices[i]}','office')`)
+        a.innerText=offices[i];
+        span.setAttribute('id',officesIds[i]);
+        span.setAttribute('class',"list-padding");
+
+        li.appendChild(a);
+        li.appendChild(span);
+        ulOffices.appendChild(li);
+    }
+    
+}
+function filterByFirstNameTemplate()
+{
+    const div = document.createElement('div');
+    const icon = document.createElement('i');
+    div.setAttribute('class','char');
+    icon.setAttribute('class',"bi bi-person");
+    div.appendChild(icon);
+    div.setAttribute('onclick','onReload()');
+    charContainer.appendChild(div);
+    for(let i=0;i<26;i++)
+    {
+        const div2 = document.createElement('div');
+        div2.setAttribute('class','char');
+        div2.setAttribute('onclick','filterByFirstName()');
+        div2.innerText=String.fromCharCode(i+65);
+        charContainer.appendChild(div2);
+        
+    }
+    
+}
 function countNodeFunction()
 {
     countNode.set('IT',0);
@@ -263,7 +372,7 @@ function countNodeFunction()
     countNode.set('India',0);
     countNode.set('SharePoint Practice Head',0);
     countNode.set('.Net Development Lead',0);
-    countNode.set('Recruititng Expert',0);
+    countNode.set('Recruiting Expert',0);
     countNode.set('Bi Developer',0);
     countNode.set('Business Analyst',0);
 
@@ -282,7 +391,7 @@ function sideBarNodeCounts()
     navIndia.innerText = '('+countNode.get('India')+')';
     navSharePointHead.innerText = '('+countNode.get('SharePoint Practice Head')+')';
     navNetDevelopmentHead.innerText = '('+countNode.get('.Net Development Lead')+')';
-    navRecruitingExpert.innerText = '('+countNode.get('Recruititng Expert')+')';
+    navRecruitingExpert.innerText = '('+countNode.get('Recruiting Expert')+')';
     navBiDeveloper.innerText = '('+countNode.get('Bi Developer')+')';
     navBusinessAnalyst.innerText = '('+countNode.get('Business Analyst')+')';
 }
@@ -304,27 +413,30 @@ function filterByFirstName()
     {
         isActiveContainer.style.backgroundColor="";
         isActiveContainer=undefined;
+        onReload();
     }
     else if(isActiveContainer!==undefined)
     {
         isActiveContainer.style.backgroundColor="";
         currentContainer.style.backgroundColor='green';
         isActiveContainer=currentContainer;
+        searchEmployeeByFirstName(firstChar);
     }
     else
     {
-    isActiveContainer=currentContainer;
-    currentContainer.style.backgroundColor = 'green';
+        isActiveContainer=currentContainer;
+        currentContainer.style.backgroundColor = 'green';
+        searchEmployeeByFirstName(firstChar);
     }
     
-    searchEmployeeByFirstName(firstChar);
+    
 
 }
 function editFormField(e)
 {
     empFormDisplay(); 
     var empData = JSON.parse(localStorage.getItem('data'));
-    var empName = e.currentTarget.children[0].innerText;
+    var empName = e.currentTarget.children[1].children[0].innerText;
     empData.forEach(e => {
         if(e.preferredName === empName)
         {
@@ -356,11 +468,18 @@ function editFormField(e)
         
     currentEvent = e;
     isEdit = true;
-    console.log(isEdit);
+}
+function clearValidations()
+{
+    errorEmail.style.display='none';
+    errorFirstName.style.display='none';
+    errorLastName.style.display='none';
+    errorPhoneNumber.style.display='none';
+    errorSkypeId.style.display='none';
+    console.log(errorPhoneNumber);
 }
 function editFunction(e)
 {
-    console.log(e.target.parentNode.children);
     e.target.parentNode.children[0].disabled=false;
     e.target.parentNode.children[0].focus();
 }
@@ -368,49 +487,40 @@ function validations()
 {
     if(empFirstName.value==='')
     {
-    alert("Enter First Name");
-    empFirstName.focus();
+        errorFirstName.style.setProperty('display','block','important');
+        empFirstName.focus();
     }
     else if(empLastName.value==='')
     {
-    alert("Enter LastName");
-    empLastName.focus();
+        errorLastName.style.setProperty('display','block','important');
+        empLastName.focus();
     }
-    // else if(empPrefferedName.value === '')
-    // {
-    //     alert("Enter Preferred Name");
-    //     empPrefferedName.focus();
-    // }
     else if(empEmail.value ==='')
     {
-    alert("Enter Email");
-    empEmail.focus();
+        errorEmail.style.setProperty('display','block','important');
+        empEmail.focus();
     }
     else if(empJobTitle.value ==='')
     {
-    alert("Enter JobTitle");
-    empJobTitle.focus();
+        empJobTitle.focus();
     }
     else if(empOffice.value ==='')
     {
-    alert("Enter office");
-    empOffice.focus();
+        empOffice.focus();
     }
     else if(empPhoneNumber.value ===''||empPhoneNumber.value.length<10)
     {
-    alert("Enter Valid PhoneNumber");
-    empPhoneNumber.focus();
+        errorPhoneNumber.style.setProperty('display','block','important');
+        empPhoneNumber.focus();
     }
     else if(empSkypeId.value ==='')
     {
-    alert("Enter SkyapeId");
-    empSkypeId.focus();
+        errorSkypeId.style.setProperty('display','block','important');
+        empSkypeId.focus();
     }
     else if(empDepartement.value === '')
     {
-    alert("Enter Valid Departement");
     empDepartement.focus();
-
     }
     else
     {
@@ -424,7 +534,7 @@ function ValidateEmail(input) {
     if (input.match(validRegex)) {
       return true;
     } else {
-      alert("Invalid email address!");
+        errorEmail.style.setProperty('display','block','important');
       return false;
     }
   
