@@ -52,15 +52,6 @@
                         <button type="button" class="clear-btn">Clear</button>
                         <label for="filter-by " class="filter">Filter by <span class="px-1"></span>
                             <select name="drop-down" id="filters-name" >
-                                <option value="preferredName" selected>Preferred Name</option>
-                                <option value="firstName">First Name</option>
-                                <option value="lastName">Last Name</option>
-                                <option value="email">Email</option>
-                                <option value="jobTitle">Job Title</option>
-                                <option value="office">Office</option>
-                                <option value="departement">Departement</option>
-                                <option value="phoneNumber">Phone Number</option>
-                                <option value="skypeId">Skype ID</option>
                             </select></label>
                         <button class="ms-auto" id="add-employee"> Add Employee</button>
                     </div>
@@ -81,24 +72,9 @@
                 <div><input type="email" placeholder="Enter Email" id="email" class="form-padding"><i class="bi bi-pencil"></i></div><div class="validate-error errorEmail">Enter valid Email</div>
                 <div><input type="text" placeholder="Enter PhoneNumber" id="phoneNumber"  class="form-padding" maxlength="10"><i class="bi bi-pencil"></i></div><div class="validate-error errorPhoneNumber">Enter valid PhoneNumber</div>
                 <div><input type="text" placeholder="Enter SkypeId" id="skypeid" class="form-padding"><i class="bi bi-pencil"></i></div><div class="validate-error errorSkypeId">Enter valid skypeId</div>
-                <div> <select name="departement" id="Departement" class="form-padding">
-                        <option value="IT" >IT</option>
-                        <option value="Human Resources" selected>Human Resources</option>
-                        <option value="MD">MD</option>
-                        <option value="Sales">Sales</option>
-                    </select><i class="bi bi-pencil"></i></div>
-                <div><select name="Offices" id="office" class="form-padding">
-                        <option value="Seattle" selected>Seattle</option>
-                        <option value="India">india</option>
-                    </select><i class="bi bi-pencil"></i></div>
-                <div> <select name="jobTitles" id="jobTitle" class="form-padding">
-                        <option value="SharePoint Practice Head" selected>SharePoint Practise Head</option>
-                        <option value=".Net Development Lead">.Net Development Lead</option>
-                        <option value="Recruiting Expert">Recruiting Expert</option>
-                        <option value="Bi Developer">Bi Developer</option>
-                        <option value="Business Analyst">Business Analyst</option>
-                    </select><i class="bi bi-pencil"></i></div>
-
+                <div> <select name="departement" id="Departement" class="form-padding"></select><i class="bi bi-pencil"></i></div>
+                <div><select name="Offices" id="office" class="form-padding"></select><i class="bi bi-pencil"></i></div>
+                <div><select name="jobTitles" id="jobTitle" class="form-padding"></select><i class="bi bi-pencil"></i></div>
                 <div class="add-employee-btn"><button type="submit" id="submitBtn">Add Employee</button></div>
                 <div class="cancel-btn"><button type="button" id="closeBtn">Cancel</button></div>
             </div>

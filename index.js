@@ -12,8 +12,8 @@ class Employee{
         this.departement = departement;
     }
 }
-
-
+let isEdit = false;
+let currentEvent;
 const jobTitles = ['SharePoint Practice Head','.Net Development Lead','Recruiting Expert','Bi Developer','Business Analyst'];
 const jobTitlesIds = ['sharepointPractice','netDevelpoment','recruitingExpert','biDeveloper','businessAnalyst'];
 const departementSearch = ['it','human Resource','md','sales'];
@@ -49,32 +49,71 @@ const errorLastName =document.querySelector('.errorLastName');
 const errorPhoneNumber = document.querySelector('.errorPhoneNumber');
 const errorEmail = document.querySelector('.errorEmail');
 const errorSkypeId = document.querySelector('.errorSkypeId');
+var navIT,navHumanResource,navMd,navSales,navSeattle,navIndia,navSharePointHead,navNetDevelopmentHead,navRecruitingExpert,navBiDeveloper,navBusinessAnalyst;
 var isActiveContainer=undefined;
-createListItems();
-filterByFirstNameTemplate();
 
-for(let x of editBtn)
-{
-    x.addEventListener('click',function(event){
-        editFunction(event);
-    })
-}
 const countNode = new Map();
+const dropDown = new Map();
 
-const navIT = document.querySelector('#it');
-const navHumanResource = document.querySelector('#humanResource');
-const navMD = document.querySelector('#md');
-const navSales = document.querySelector('#sales');
-const navSeattle = document.querySelector('#seattle');
-const navIndia = document.querySelector('#india');
-const navSharePointHead = document.querySelector('#sharepointPractice');
-const navNetDevelopmentHead = document.querySelector('#netDevelpoment');
-const navRecruitingExpert = document.querySelector('#recruitingExpert');
-const navBiDeveloper = document.querySelector('#biDeveloper');
-const navBusinessAnalyst = document.querySelector('#businessAnalyst');
-let isEdit = false;
-let currentEvent;
-onReload();
+window.onload = function()
+{
+    initializeDropDown();
+    createDropDownTemplate();
+    createFormDropDownTemplate();
+    createListItems();
+    filterByFirstNameTemplate();
+    for(let x of editBtn)
+    {
+        x.addEventListener('click',function(event){
+            editFunction(event);
+        })
+    }
+     navIT = document.querySelector('#it');
+     navHumanResource = document.querySelector('#humanResource');
+     navMD = document.querySelector('#md');
+     navSales = document.querySelector('#sales');
+     navSeattle = document.querySelector('#seattle');
+     navIndia = document.querySelector('#india');
+     navSharePointHead = document.querySelector('#sharepointPractice');
+     navNetDevelopmentHead = document.querySelector('#netDevelpoment');
+     navRecruitingExpert = document.querySelector('#recruitingExpert');
+     navBiDeveloper = document.querySelector('#biDeveloper');
+     navBusinessAnalyst = document.querySelector('#businessAnalyst');
+     onReload();
+    
+}
+function createFormDropDownTemplate()
+{
+    for(let i=0;i<departement.length;i++)
+    {
+    const opt = document.createElement('option');
+    opt.setAttribute('value',departement[i]);
+    opt.innerText = departement[i];
+    if(departement[i]=='Human Resources')
+    opt.setAttribute('selected','');
+    empDepartement.appendChild(opt);
+    }
+
+    for(let i=0;i<jobTitles.length;i++)
+    {
+    const opt = document.createElement('option');
+    opt.setAttribute('value',jobTitles[i]);
+    opt.innerText = jobTitles[i];
+    if(i===0)
+    opt.setAttribute('selected','');
+    empJobTitle.appendChild(opt);
+    }
+
+    for(let i=0;i<offices.length;i++)
+    {
+    const opt = document.createElement('option');
+    opt.setAttribute('value',offices[i]);
+    opt.innerText = offices[i];
+    if(i===0)
+    opt.setAttribute('selected','');
+    empOffice.appendChild(opt);
+    }
+}
 function onReload()
 {
     countNodeFunction();
@@ -89,9 +128,10 @@ function onReload()
         initializeCountNode(x.office);
         initializeCountNode(x.jobTitle);
     }
-}
+    }
     sideBarNodeCounts();
 }
+
 clearBtn.addEventListener('click',(e)=>{
     searchNode.value="";
     if(isActiveContainer)
@@ -362,6 +402,31 @@ function filterByFirstNameTemplate()
     }
     
 }
+function createDropDownTemplate()
+{
+    dropDown.forEach((value,key)=>{
+        const opt = document.createElement('option');
+        opt.setAttribute('value',value);
+        if(value=='preferredName')
+        opt.setAttribute('selected','')
+        opt.innerText = key;
+        filterNode.appendChild(opt);
+    })
+
+    
+}
+function initializeDropDown()
+{
+    dropDown.set('Preferred Name','preferredName');
+    dropDown.set('First Name','firstName');
+    dropDown.set('Last Name','lastName');
+    dropDown.set('Email','email');
+    dropDown.set('Job Title','jobTitle');
+    dropDown.set('Office','office');
+    dropDown.set('Departement','departement');
+    dropDown.set('Phone Number','phoneNumber');
+    dropDown.set('Skype ID','skypeId');
+}
 function countNodeFunction()
 {
     countNode.set('IT',0);
@@ -383,6 +448,7 @@ function initializeCountNode(field)
 }
 function sideBarNodeCounts()
 {
+    console.log(navIT);
     navIT.innerText='('+countNode.get('IT')+')';
     navHumanResource.innerText = '('+countNode.get('Human Resources') +')';
     navMD.innerText = '('+countNode.get('MD')+')';
